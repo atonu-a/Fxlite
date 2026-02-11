@@ -1,0 +1,29 @@
+option {
+    color: black;
+}
+
+
+.animate{
+
+    border-right: 10px solid #00D1C1;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: 
+        typing 4s infinite alternate,
+        cursor .4s step-end infinite alternate;
+}
+@keyframes cursor{
+    50%{
+        border-color: transparent;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 6ch;
+    }
+}

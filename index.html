@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>FxLite – Simple Currency Converter</title>
+</head>
+<body class="bg-[#0B0E14] flex flex-col items-center gap-10 min-h-screen justify-center text-white">
+
+    <div class="rounded-[20px] flex flex-col bg-[#1C222D]  mx-auto gap-2.5  p-8 min-h-[45vh] w-[40vh] ">
+        <div class="">
+            <h2 class="animate text-[32px] font-extrabold text-[#00D1C1] inline-block">FxLite.</h2>
+        </div>
+        
+        
+        
+        
+        <form class="mt-8 mb-4 flex flex-col">
+            <div class="amount flex flex-col gap-2.5 ">
+                <p class="text-[24px] font-bold">Enter Amount</p>
+                <input value="100" type="text" class="border border-gray-400 text-[16px] h-12 pl-2">
+            </div>
+        
+            <!-- From -->
+            <div class="dropdown flex justify-between items-center mt-8">
+                <div class="from">
+                    <p>From</p>
+                    <div class="select-container flex justify-center items-center rounded-[8px] w-[96px] border border-gray-400">
+                        <img class="w-8" src="https://flagsapi.com/US/flat/64.png">
+                        <select class="w-full outline-0 rounded-[0.75rem] text-[16px] w-auto" name="From">
+
+                        </select>
+                    </div>
+                </div>
+        
+                <!-- Font awesome exchange icon  -->
+                <i class="fa-solid fa-right-left"></i>
+        
+        
+                <!-- To -->
+                <div class="to">
+                    <p>To</p>
+                    <div class="select-container flex justify-center items-center rounded-[8px] w-[96px] border border-gray-400">
+                        <img class="w-8" src="https://flagsapi.com/BD/flat/64.png">
+                        <select class="w-full outline-0 rounded-[0.75rem] text-[16px] w-auto" name="To">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+            <p id="msg" class="my-8 font-bold text-[1.5rem]"></p>
+            <button class="bg-[#00D1C1] text-black w-full h-[3rem] outline-0 rounded-[0.75rem] text-[1.15rem] cursor-pointer font-semibold">Get Exchange Rate</button>
+        
+        </form>
+    </div>
+    
+
+    <script src="codes.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
