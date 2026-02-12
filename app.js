@@ -1,5 +1,5 @@
 
-let BASE_URL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/";
+let BASE_URL = "https://open.er-api.com/v6/latest/";
 
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("button");
@@ -24,34 +24,36 @@ for (let select of dropdowns) {
   });
 }
 
-const updateFlag = (element) => {
-  let code = element.value;
-  let countryCode = countryList[code];
-  let newLink = `https://flagsapi.com/${countryCode}/flat/64.png`;
-  let img = element.parentElement.querySelector("img");
-  img.src = newLink;
-};
-
-btn.addEventListener("click", async (e) => {
-  e.preventDefault();
-  let amount = document.querySelector(".amount input");
+const conversion = async () => {
+    try{
+        let amount = document.querySelector(".amount input");
   let amtVal = amount.value;
   if (amtVal === "" || amtVal < 1) {
     amtVal = 1;
     amount.value = 1;
   }
 
-  let from =fromCurr.value.toLowerCase();
-  let to  = toCurr.value.toLowerCase();
+  let from = fromCurr.value;
+  let to = toCurr.value;
 
-  const URL = `${BASE_URL}${from}.min.json` ;
-
+  let URL = `${BASE_URL}${from}`;
   let response = await fetch(URL);
   let data = await response.json();
-  console.log(response);
-  let rate = data[from][to];
-  let cnvt = rate *amtVal;
-  msg.innerText = ` ${amtVal} ${fromCurr.value} = ${cnvt} ${toCurr.value}`;
-  msg.style.color = "#90EE90";
-  
-});
+  let rate = data.rates[to];
+  let cnvt = rate * amtVal;
+
+  msg.innerText = `${amtVal} ${from} = ${cnvt} ${to}`;
+    }
+
+    catch(err){
+        msg.innerText = "Something went wrong!";
+        console.error(err);
+    }
+};
+
+window.addEventListener("load", conversion);
+
+btn.addEventListener("click",(e)=>{
+    e.preventDefault();
+    conversion();
+} );
